@@ -16,16 +16,23 @@ import io.flutter.embedding.engine.dart.DartExecutor;
 
 public class Main2Activity extends AppCompatActivity {
 
+
+    private String route = "main.dart";
+    private static final String BASIC_MESSAGE_CHANNEL = "basic_message_channel";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-        cache(this, "main1.dart");
+        cache(this, route);
+
+        Intent intent = getIntent();
+        String aa = intent.getStringExtra(PayPlugin.Key);
         findViewById(R.id.tv).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(Main2Activity.this, "a", Toast.LENGTH_LONG).show();
-                startActivity(Main2Activity.this, "main1.dart");
+                startActivity(Main2Activity.this, route);
             }
         });
     }
@@ -47,7 +54,7 @@ public class Main2Activity extends AppCompatActivity {
                     .withCachedEngine(url)
                     .build(activity);
             try {
-
+                intent.putExtra("mydata", "66778899");
                 activity.startActivity(intent);
             } catch (Exception e) {
                 Log.d("s", e.getLocalizedMessage());

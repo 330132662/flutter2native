@@ -25,6 +25,7 @@ public class PayPlugin implements FlutterPlugin, MethodChannel.MethodCallHandler
     private MethodChannel channel;
 
     private Context context;
+    static String Key = "mydata";
 
     private FlutterActivity flutterActivity;
 
@@ -40,8 +41,11 @@ public class PayPlugin implements FlutterPlugin, MethodChannel.MethodCallHandler
         if (call.method.equals("getPlatformVersion")) {
             result.success("b Android " + android.os.Build.VERSION.RELEASE);
         } else if (call.method.equals("test1_function")) {
-//            Intent intent = new Intent(context, Main2Activity.class);
-            Intent intent = new Intent(context, AllinPayActivity.class);
+
+            String text = call.argument("flutter");
+            Intent intent = new Intent(context, Main2Activity.class);
+            intent.putExtra(Key, text);
+//            Intent intent = new Intent(context, AllinPayActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
             result.success("跳转测试 ");
