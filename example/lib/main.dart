@@ -71,16 +71,13 @@ class _MyAppState extends State<MyApp> {
               child: Text("main"),
               onPressed: () async {
                 //  先跳  main1  再 跳android 最后跳到main1
-                /*Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const MyApp1()),
-                );*/
-                Navigator.of(context).push(
+
+                /*Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) => MyAppLess(),
                   ),
-                );
-                // initPlatformState();
+                );*/
+                initPlatformState();
               }),
         ),
       ),

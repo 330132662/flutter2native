@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:padding="@dimen/tlsdkPadding8"
+            android:text="支付金额(元)"
+            android:textColor="@color/tlsdkTextMiddle"
+            android:textSize="@dimen/tlsdkTextNormalTitle" />
+
+        <EditText
+            android:id="@+id/et_amt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入金额"
+            android:inputType="numberDecimal"
+            android:padding="@dimen/tlsdkPadding16"
+            android:text="0.01"
+            android:textColor="@color/tlsdkTextDark"
+            android:textSize="@dimen/tlsdkTextNormalTitle" />
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/tlsdkMargin16"
+        android:layout_marginTop="@dimen/tlsdkPadding8"
+        android:layout_marginRight="@dimen/tlsdkMargin16"
+        android:onClick="turnToPay"
+        android:text="支付方式界面"
+        android:textColor="@color/tlsdkTextDark"
+        android:textSize="@dimen/tlsdkTextNormalTitle" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/tlsdkMargin16"
+        android:layout_marginRight="@dimen/tlsdkMargin16"
+        android:layout_marginBottom="@dimen/tlsdkPadding8"
+        android:onClick="turnToPayNoCredit"
+        android:text="支付方式界面(仅储蓄卡)"
+        android:textColor="@color/tlsdkTextDark"
+        android:textSize="@dimen/tlsdkTextNormalTitle" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:padding="@dimen/tlsdkPadding8"
+            android:text="下单银行"
+            android:textColor="@color/tlsdkTextMiddle"
+            android:textSize="@dimen/tlsdkTextNormalTitle" />
+
+        <EditText
+            android:id="@+id/et_bank"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入银行编码（默认:0308）"
+            android:inputType="numberDecimal"
+            android:padding="@dimen/tlsdkPadding16"
+            android:textColor="@color/tlsdkTextDark"
+            android:textSize="@dimen/tlsdkTextNormalTitle" />
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/tlsdkMargin16"
+        android:layout_marginRight="@dimen/tlsdkMargin16"
+        android:layout_marginBottom="@dimen/tlsdkPadding8"
+        android:onClick="pay"
+        android:text="无界面直接下单"
+        android:textColor="@color/tlsdkTextDark"
+        android:textSize="@dimen/tlsdkTextNormalTitle" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/tlsdkMargin16"
+            android:textColor="@color/tlsdkTextMiddle"
+            android:textSize="@dimen/tlsdkTextNormalTitle" />
+    </ScrollView>
+
+</LinearLayout>

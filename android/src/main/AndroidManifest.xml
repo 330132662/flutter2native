@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.pay_plugin">
 
-    <application android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+    <application android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        >
         <activity
             android:name=".Main2Activity"
+            android:exported="false" />
+
+        <activity
+            android:name="com.example.pay_plugin.AllinPayActivity"
             android:exported="false" />
     </application>
 
