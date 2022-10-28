@@ -33,7 +33,6 @@ public class PayPlugin implements FlutterPlugin, MethodChannel.MethodCallHandler
         context = flutterPluginBinding.getApplicationContext();
         channel = new MethodChannel(flutterPluginBinding.getBinaryMessenger(), "pay_plugin");
         channel.setMethodCallHandler(this);
-        flutterActivity = (FlutterActivity) flutterPluginBinding.getApplicationContext();
     }
 
     @Override

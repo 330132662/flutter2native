@@ -3,30 +3,30 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pay_plugin/pay_plugin.dart';
-import 'package:pay_plugin_example/main1.dart';
 
 void main() {
-  runApp(Appless());
+  runApp(MyAppLess());
 }
 
-class Appless extends StatelessWidget {
+class MyAppLess extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return new MaterialApp(
-      home: MyApp(),
+      routes: {'/other': (BuildContext context) => Other()},
+      home: MyApp1(),
     );
   }
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MyApp1 extends StatefulWidget {
+  const MyApp1({Key? key}) : super(key: key);
 
   @override
-  State<MyApp> createState() => _MyAppState();
+  State<MyApp1> createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _MyAppState extends State<MyApp1> {
   String _platformVersion = 'Unknown';
 
   @override
@@ -60,39 +60,38 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Plugin example app'),
-        ),
-        body: Center(
-          // child: Text('Running on: $_platformVersion\n'),
-          child: new RaisedButton(
-              child: Text("main"),
-              onPressed: () async {
-                //  先跳  main1  再 跳android 最后跳到main1
-                /*Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const MyApp1()),
-                );*/
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => MyAppLess(),
-                  ),
-                );
-                // initPlatformState();
-              }),
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Plugin example app'),
+      ),
+      body: Center(
+        // child: Text('Running on: $_platformVersion\n'),
+        child: new TextButton(
+            child: Text("main1"),
+            onPressed: () {
+              initPlatformState();
+            }),
       ),
     );
   }
 
 //平台通道––––跳转到Android页面
-  static const platform = const MethodChannel('samples.flutter.jumpto.android');
+/*static const platform = const MethodChannel('samples.flutter.jumpto.android');
 
   //跳转到Android页面
   Future<Null> _jumpToAndroidMethod() async {
     final String result = await platform.invokeMethod('jumpToAndroidPage');
     print('result===$result');
+  }*/
+}
+
+class Other extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("other"),
+      ),
+    );
   }
 }

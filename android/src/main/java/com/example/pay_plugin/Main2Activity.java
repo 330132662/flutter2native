@@ -3,6 +3,7 @@ package com.example.pay_plugin;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -19,11 +20,12 @@ public class Main2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+        cache(this, "main1.dart");
         findViewById(R.id.tv).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(Main2Activity.this, "a", Toast.LENGTH_LONG).show();
-                startActivity(Main2Activity.this, "main.dart");
+                startActivity(Main2Activity.this, "main1.dart");
             }
         });
     }
@@ -39,13 +41,17 @@ public class Main2Activity extends AppCompatActivity {
     }
 
     public void startActivity(Context activity, String url) {
-        // url 不存在报错 https://www.codenong.com/jse6e3ff165d29/
-        if (FlutterEngineCache
-                .getInstance().contains(url)) {
+        // url 不存在报错 https://www.codenong.com/jse6e3ff165d29/  https://woomiao.cn/archives/510.html
+        if (FlutterEngineCache.getInstance().contains(url)) {
             Intent intent = FlutterActivity
                     .withCachedEngine(url)
                     .build(activity);
-            activity.startActivity(intent);
+            try {
+
+                activity.startActivity(intent);
+            } catch (Exception e) {
+                Log.d("s", e.getLocalizedMessage());
+            }
         }
     }
 }
